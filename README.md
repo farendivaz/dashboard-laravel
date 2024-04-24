@@ -1,9 +1,9 @@
 # How to run Project
-1.Run cp .env.example .env
-2.Run php artisan key:generate
-3.Run php artisan migrate
-4.Run php artisan serve
-5.Go to Localhost
+1.  Run cp .env.example .env
+2.  Run php artisan key:generate
+3.  Run php artisan migrate
+4.  Run php artisan serve
+5.  Go to Localhost
 
 ## Documentation
 
