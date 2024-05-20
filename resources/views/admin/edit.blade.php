@@ -28,12 +28,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Data Employee</h1>
+                            <h1>Data Admin</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="{{ asset('/home') }}">Home</a></li>
-                                <li class="breadcrumb-item active">Employee</li>
+                                <li class="breadcrumb-item active">Admin</li>
                             </ol>
                         </div>
                     </div>
@@ -44,55 +44,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <section class="content">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <h3>Edit Data Employee</h3>
+                        <h3>Edit Data Admin</h3>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('employee.update', ['employee' => $employee]) }}" method="post">
+                        <form action="{{ route('admin.update', ['admin' => $admin]) }}" method="post">
                             @csrf
                             @method('PATCH')
                             <div class="form-group">
                                 <label for="email">Email address</label>
                                 <input type="email" name="email" class="form-control" id="email"
-                                    value="{{ $employee->email }}" placeholder="Masukan Email" disabled>
+                                    value="{{ $admin->email }}" placeholder="Masukan Email" disabled>
                                 <!-- Display warning message below email input -->
                                 @if ($errors->has('email'))
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="nama">Nama Employee</label>
+                                <label for="nama">Nama admin</label>
                                 <input type="text" name="nama" class="form-control" id="nama"
-                                    value="{{ old('nama', $employee->nama) }}" placeholder="Masukan Nama">
+                                    value="{{ old('nama', $admin->nama) }}" placeholder="Masukan Nama">
                                 <!-- Display warning message below nama input -->
                                 @if ($errors->has('nama'))
                                     <span class="text-danger">{{ $errors->first('nama') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="notelp">Tanggal Lahir</label>
-                                <input type="date" id="tanggal_lahir" name="tanggal_lahir" min="1970-01-01"
-                                    value="{{ old('tanggal_lahir', $employee->tanggal_lahir) }}" class="form-control" />
-                                <!-- Display warning message below notelp input -->
-                                @if ($errors->has('tanggal_lahir'))
-                                    <span class="text-danger">{{ $errors->first('tanggal_lahir') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="notelp">Nomor Telepon</label>
-                                <input type="int" name="notelp" class="form-control" id="notelp"
-                                    value="{{ old('notelp', $employee->notelp) }}" placeholder="08">
-                                <!-- Display warning message below notelp input -->
-                                @if ($errors->has('notelp'))
-                                    <span class="text-danger">{{ $errors->first('notelp') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukan Alamat"> {{ old('alamat', $employee->alamat) }}</textarea>
-                                <!-- Display warning message below alamat input -->
-                                @if ($errors->has('alamat'))
-                                    <span class="text-danger">{{ $errors->first('alamat') }}</span>
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control" id="password"
+                                    value="{{ old('password', $admin->password) }}" placeholder="Password">
+                                <!-- Display warning message below password input -->
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">

@@ -28,12 +28,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Data Employee</h1>
+                            <h1>Data Status</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="{{ asset('/home') }}">Home</a></li>
-                                <li class="breadcrumb-item active">Employee</li>
+                                <li class="breadcrumb-item active">Status</li>
                             </ol>
                         </div>
                     </div>
@@ -44,54 +44,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <section class="content">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <h3>Tambah Data Employee</h3>
+                        <h3>Tambah Data Status</h3>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('employee.store') }}" method="post">
+                        <form action="{{ route('status.store') }}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="email">Email address</label>
-                                <input type="email" name="email" class="form-control" id="email"
-                                    placeholder="Masukan Email">
-                                <!-- Display warning message below email input -->
-                                @if ($errors->has('email'))
-                                    <span class="text-danger">{{ $errors->first('email') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="nama">Nama Employee</label>
-                                <input type="text" name="nama" class="form-control" id="nama"
-                                    placeholder="Masukan Nama">
+                                <label for="kode_status">Kode Status</label>
+                                <input type="text" name="kode_status" class="form-control" id="kode_status"
+                                    placeholder="Masukan Kode Status">
                                 <!-- Display warning message below nama input -->
-                                @if ($errors->has('nama'))
-                                    <span class="text-danger">{{ $errors->first('nama') }}</span>
+                                @if ($errors->has('kode_status'))
+                                    <span class="text-danger">{{ $errors->first('kode_status') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="notelp">Tanggal Lahir</label>
-                                <input type="date" id="tanggal_lahir" name="tanggal_lahir" min="1970-01-01"
+                                <label for="kerusakan">Kerusakan</label>
+                                <input type="text" id="kerusakan" name="kerusakan" min="1970-01-01"
                                     class="form-control" />
                                 <!-- Display warning message below notelp input -->
-                                @if ($errors->has('tanggal_lahir'))
-                                    <span class="text-danger">{{ $errors->first('tanggal_lahir') }}</span>
+                                @if ($errors->has('kerusakan'))
+                                    <span class="text-danger">{{ $errors->first('kerusakan') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="notelp">Nomor Telepon</label>
-                                <input type="int" name="notelp" class="form-control" id="notelp"
-                                    placeholder="08">
+                                <label for="status">Status</label>
+                                <input type="text" id="status" name="status" min="1970-01-01"
+                                    class="form-control" />
                                 <!-- Display warning message below notelp input -->
-                                @if ($errors->has('notelp'))
-                                    <span class="text-danger">{{ $errors->first('notelp') }}</span>
+                                @if ($errors->has('status'))
+                                    <span class="text-danger">{{ $errors->first('status') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukan Alamat"></textarea>
-                                <!-- Display warning message below alamat input -->
-                                @if ($errors->has('alamat'))
-                                    <span class="text-danger">{{ $errors->first('alamat') }}</span>
+                                <label for="kode_service">Kode Service</label>
+                                <input type="text" id="kode_service" name="kode_service" min="1970-01-01"
+                                    class="form-control" />
+                                <!-- Display warning message below notelp input -->
+                                @if ($errors->has('kode_service'))
+                                    <span class="text-danger">{{ $errors->first('kode_service') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">

@@ -109,7 +109,7 @@ class CustomerController extends Controller
     ]);
 
     return redirect()->route('customer.index')->with('success', 'Customer updated successfully!');
-}
+    }
 
 
     /**

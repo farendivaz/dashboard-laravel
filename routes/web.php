@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SparepartController;
+use App\Http\Controllers\StatusController;
 
 Route::get('/', function () {
     return view('HalamanDepan/home');
@@ -60,6 +64,58 @@ Route::prefix('employees')
     Route::delete('/delete/{employee}', 'destroy')->name('destroy');
 });
 
-Route::get('/InfoPage/InformasiSparepart', function () {
-    return view('InfoPage/InformasiSparepart');
+// Route Sparepart
+Route::prefix('spareparts')
+->controller(SparepartController::class)
+->name('sparepart.')
+->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/search', 'search')->name('search');
+    Route::post('/create', 'store')->name('store');
+    Route::get('/edit/{sparepart}', 'edit')->name('edit');
+    Route::patch('/update/{sparepart}', 'update')->name('update');
+    Route::delete('/delete/{sparepart}', 'destroy')->name('destroy');
+});
+
+// Route Admin
+Route::prefix('admin')
+->controller(AdminController::class)
+->name('admin.')
+->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/search', 'search')->name('search');
+    Route::post('/create', 'store')->name('store');
+    Route::get('/edit/{admin}', 'edit')->name('edit');
+    Route::patch('/update/{admin}', 'update')->name('update');
+    Route::delete('/delete/{admin}', 'destroy')->name('destroy');
+});
+
+// Route Status
+Route::prefix('status')
+->controller(StatusController::class)
+->name('status.')
+->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/search', 'search')->name('search');
+    Route::post('/create', 'store')->name('store');
+    Route::get('/edit/{status}', 'edit')->name('edit');
+    Route::patch('/update/{status}', 'update')->name('update');
+    Route::delete('/delete/{status}', 'destroy')->name('destroy');
+});
+
+// Route Service
+Route::prefix('services')
+->controller(ServiceController::class)
+->name('service.')
+->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/search', 'search')->name('search');
+    Route::post('/create', 'store')->name('store');
+    Route::get('/edit/{service}', 'edit')->name('edit');
+    Route::patch('/update/{service}', 'update')->name('update');
+    Route::delete('/delete/{service}', 'destroy')->name('destroy');
 });

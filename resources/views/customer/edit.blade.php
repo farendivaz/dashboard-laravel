@@ -44,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <section class="content">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <h3>Tambah Data Customer</h3>
+                        <h3>Edit Data Customer</h3>
                     </div>
 
                     <div class="card-body">

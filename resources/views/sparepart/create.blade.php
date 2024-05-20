@@ -28,12 +28,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Data Employee</h1>
+                            <h1>Data Sparepart</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="{{ asset('/home') }}">Home</a></li>
-                                <li class="breadcrumb-item active">Employee</li>
+                                <li class="breadcrumb-item active">Sparepart</li>
                             </ol>
                         </div>
                     </div>
@@ -44,54 +44,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <section class="content">
                 <div class="card card-info card-outline">
                     <div class="card-header">
-                        <h3>Tambah Data Employee</h3>
+                        <h3>Tambah Data Sparepart</h3>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('employee.store') }}" method="post">
+                        <form action="{{ route('sparepart.store') }}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="email">Email address</label>
-                                <input type="email" name="email" class="form-control" id="email"
-                                    placeholder="Masukan Email">
+                                <label for="kode_sparepart">Kode Barang</label>
+                                <input type="text" name="kode_sparepart" class="form-control" id="kode_sparepart"
+                                    placeholder="Masukan Kode Barang">
                                 <!-- Display warning message below email input -->
-                                @if ($errors->has('email'))
-                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @if ($errors->has('kode_sparepart'))
+                                    <span class="text-danger">{{ $errors->first('kode_sparepart') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="nama">Nama Employee</label>
-                                <input type="text" name="nama" class="form-control" id="nama"
-                                    placeholder="Masukan Nama">
-                                <!-- Display warning message below nama input -->
-                                @if ($errors->has('nama'))
-                                    <span class="text-danger">{{ $errors->first('nama') }}</span>
+                                <label for="jenis">Jenis Barang</label>
+                                <input type="text" name="jenis" class="form-control" id="jenis"
+                                    placeholder="Masukan Jenis Barang">
+                                <!-- Display warning message below jenis barang input -->
+                                @if ($errors->has('jenis'))
+                                    <span class="text-danger">{{ $errors->first('jenis') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="notelp">Tanggal Lahir</label>
-                                <input type="date" id="tanggal_lahir" name="tanggal_lahir" min="1970-01-01"
-                                    class="form-control" />
-                                <!-- Display warning message below notelp input -->
-                                @if ($errors->has('tanggal_lahir'))
-                                    <span class="text-danger">{{ $errors->first('tanggal_lahir') }}</span>
+                                <label for="brand">Nama Brand</label>
+                                <input type="text" name="brand" class="form-control" id="brand"
+                                    placeholder="Masukan Nama Brand">
+                                <!-- Display warning message below brand barang input -->
+                                @if ($errors->has('brand'))
+                                    <span class="text-danger">{{ $errors->first('brand') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="notelp">Nomor Telepon</label>
-                                <input type="int" name="notelp" class="form-control" id="notelp"
-                                    placeholder="08">
-                                <!-- Display warning message below notelp input -->
-                                @if ($errors->has('notelp'))
-                                    <span class="text-danger">{{ $errors->first('notelp') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukan Alamat"></textarea>
-                                <!-- Display warning message below alamat input -->
-                                @if ($errors->has('alamat'))
-                                    <span class="text-danger">{{ $errors->first('alamat') }}</span>
+                                <label for="harga">Harga</label>
+                                <input type="number" name="harga" class="form-control" id="harga"
+                                    placeholder="Masukkan Harga Barang">
+                                <!-- Display warning message below harga input -->
+                                @if ($errors->has('harga'))
+                                    <span class="text-danger">{{ $errors->first('harga') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">

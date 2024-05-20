@@ -43,6 +43,12 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{{ asset('admin') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Admin</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ asset('customers') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Customer</p>
@@ -51,7 +57,7 @@
                         <li class="nav-item">
                             <a href="{{ asset('employees') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Karyawan</p>
+                                <p>Employee</p>
                             </a>
                         </li>
                     </ul>
@@ -67,21 +73,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ asset('InfoPage/StatusService') }}" class="nav-link">
+                            <a href="{{ asset('status') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Status Service</p>
+                                <p>Status</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ asset('InfoPage/InformasiService') }}" class="nav-link">
+                            <a href="{{ asset('services') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Informasi Service</p>
+                                <p>Service</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ asset('InfoPage/InformasiSparepart') }}" class="nav-link">
+                            <a href="{{ asset('spareparts') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Informasi Sparepart</p>
+                                <p>Sparepart</p>
                             </a>
                         </li>
 
