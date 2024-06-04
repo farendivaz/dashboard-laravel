@@ -58,8 +58,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <th>Tanggal Service</th>
                                 <th>Kode Sparepart</th>
                                 <th>Nama Customer</th>
+                                <th>Email Customer</th>
                                 <th>Nama Employee</th>
-
+                                <th>Email Employee</th>
                             </tr>
 
                             @forelse ($services as $service)
@@ -69,7 +70,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <td>{{ $service->tanggal_service }}</td>
                                     <td>{{ $service->kode_sparepart }}</td>
                                     <td>{{ $service->nama_customer }}</td>
+                                    <td>{{ $service->email_customer }}</td>
                                     <td>{{ $service->nama_employee }}</td>
+                                    <td>{{ $service->email_employee }}</td>
                                     <td class="d-flex justify-content-center">
                                         <a class="btn btn-info btn-sm mr-2"
                                             href="{{ route('service.edit', $service->id) }}">

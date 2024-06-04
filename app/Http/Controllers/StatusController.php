@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use App\Models\Status;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,9 @@ class StatusController extends Controller
      */
     public function create()
     {
-        return view('status.create');
+        $statuses = Status::all();
+        $services = Service::all();
+        return view('status.create', compact('statuses', 'services'));
     }
 
     /**
@@ -68,11 +71,13 @@ class StatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Status $status)
+    public function edit($id)
     {
         // $customers = Customer::all();
-
-        return view('status.edit', ['status' => $status]);
+        $status = Status::findOrFail($id);
+        $services = Service::all();
+        return view('status.edit', compact('status', 'services'));
+        // return view('status.edit', ['status' => $status]);
 
     }
 
@@ -83,7 +88,6 @@ class StatusController extends Controller
     {
     // Validate the incoming request data
     $request->validate([
-        'kode_status' => 'required',
         'kerusakan' => 'required',
         'status' => 'required',
         'kode_service' => 'required',
@@ -97,7 +101,6 @@ class StatusController extends Controller
     }
 
     Status::where('id', $status->id)->update([
-        'kode_status' => $request->kode_status,
         'kerusakan' => $request->kerusakan,
         'status' => $request->status,
         'kode_service' => $request->kode_service,

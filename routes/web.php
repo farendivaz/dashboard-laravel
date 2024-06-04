@@ -118,4 +118,7 @@ Route::prefix('services')
     Route::get('/edit/{service}', 'edit')->name('edit');
     Route::patch('/update/{service}', 'update')->name('update');
     Route::delete('/delete/{service}', 'destroy')->name('destroy');
+    Route::get('/customer/{id}', 'getCustomerData')->name('getCustomerData');
+    Route::get('/employee/{id}', 'getEmployeeData')->name('getEmployeeData');
+
 });

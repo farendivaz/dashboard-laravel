@@ -48,7 +48,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route('status.update', ['status' => $status]) }}" method="post">
+                        <form action="{{ route('status.update', $status->id) }}" method="post">
                             @csrf
                             @method('PATCH')
                             <div class="form-group">
@@ -79,14 +79,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="kode_service">Kode Service</label>
-                                <input type="text" id="kode_service" name="kode_service"
-                                    value={{ $status->kode_service }} placeholder="Masukan Kode Service"
-                                    class="form-control" />
-                                <!-- Display warning message below notelp input -->
-                                @if ($errors->has('kode_service'))
-                                    <span class="text-danger">{{ $errors->first('kode_service') }}</span>
-                                @endif
+                                <label for="kode_service">Pilih Kode Service</label>
+                                <select id="kode_service" name="kode_service" class="form-control">
+                                    <option value="" selected disabled>Pilih Kode Service</option>
+                                    @foreach ($services as $service)
+                                        <option value="{{ $service->kode_service }}">{{ $service->kode_service }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">Simpan</button>

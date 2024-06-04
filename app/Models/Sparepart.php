@@ -12,4 +12,9 @@ class Sparepart extends Model
     protected $fillable = [
         'id','kode_sparepart','jenis','brand','harga'
     ];
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

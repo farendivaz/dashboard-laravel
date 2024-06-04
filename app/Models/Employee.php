@@ -12,4 +12,9 @@ class Employee extends Model
     protected $fillable = [
         'id','nama','email','notelp','alamat', 'tanggal_lahir'
     ];
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

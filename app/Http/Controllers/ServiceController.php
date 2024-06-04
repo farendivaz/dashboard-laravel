@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\Employee;
 use App\Models\Service;
+use App\Models\Sparepart;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -22,7 +25,10 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('service.create');
+        $customers = Customer::all();
+        $employees = Employee::all();
+        $spareparts = Sparepart::all();
+        return view('service.create', compact('customers', 'employees', 'spareparts'));
     }
 
     /**
@@ -36,8 +42,12 @@ class ServiceController extends Controller
             'kode_service' => 'required|string|unique:services,kode_service',
             'tanggal_service' => 'required',
             'kode_sparepart' => 'required',
+            'customer_id' => 'required',
+            'employee_id' => 'required',
             'nama_customer' => 'required',
             'nama_employee' => 'required',
+            'email_customer' => 'required',
+            'email_employee' => 'required',
         ]);
 
                // Check if the email already exists
@@ -52,8 +62,12 @@ class ServiceController extends Controller
                 'kode_service' => $request->kode_service,
                 'tanggal_service' => $request->tanggal_service,
                 'kode_sparepart' => $request->kode_sparepart,
+                'customer_id' => $request->customer_id,
+                'employee_id' => $request->employee_id,
                 'nama_customer' => $request->nama_customer,
                 'nama_employee' => $request->nama_employee,
+                'email_customer' => $request->email_customer,
+                'email_employee' => $request->email_employee,
                ]);
 
                return redirect()
@@ -73,11 +87,13 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Service $service)
+    public function edit($id)
     {
-        // $customers = Customer::all();
-
-        return view('service.edit', ['service' => $service]);
+        $service = Service::findOrFail($id);
+        $customers = Customer::all();
+        $employees = Employee::all();
+        $spareparts = Sparepart::all();
+        return view('service.edit', compact('service', 'customers', 'employees', 'spareparts'));
 
     }
 
@@ -86,13 +102,17 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-     // Validate the incoming request data
-     $request->validate([
-        'tanggal_service' => 'required',
-        'kode_sparepart' => 'required',
-        'nama_customer' => 'required',
-        'nama_employee' => 'required',
-    ]);
+            // Validate the incoming request data
+            $request->validate([
+                'tanggal_service' => 'required',
+                'kode_sparepart' => 'required',
+                'customer_id' => 'required',
+                'employee_id' => 'required',
+                'nama_customer' => 'required',
+                'nama_employee' => 'required',
+                'email_customer' => 'required',
+                'email_employee' => 'required',
+            ]);
 
     // Check if the email already exists
     $existingKodeService = Service::where('kode_service', $request->kode_service)->first();
@@ -101,12 +121,26 @@ class ServiceController extends Controller
         return back()->withInput()->with('warning', 'Kode Service sudah ada. Pilih Kode Service lain.');
     }
 
-    Service::where('id', $service->id)->update([
+     // Update service
+     $service->update([
+        // 'kode_service' => $request->kode_service,
         'tanggal_service' => $request->tanggal_service,
         'kode_sparepart' => $request->kode_sparepart,
+        'customer_id' => $request->customer_id,
+        'employee_id' => $request->employee_id,
         'nama_customer' => $request->nama_customer,
         'nama_employee' => $request->nama_employee,
-    ]);
+        'email_customer' => $request->email_customer,
+        'email_employee' => $request->email_employee,
+       ]);
+    //  $service->update([
+    //     'kode_service' => $request->kode_service,
+    //     'tanggal_service' => $request->tanggal_service,
+    //     'kode_sparepart' => $request->kode_sparepart,
+    //     'customer_id' => $request->customer_id,
+    //     'employee_id' => $request->employee_id,
+    // ]);
+
 
     return redirect()->route('service.index')->with('success', 'Service updated successfully!');
     }
@@ -121,4 +155,23 @@ class ServiceController extends Controller
 
         return redirect()->route('service.index')->with('success', 'Service deleted successfully');
     }
+
+    public function getCustomerData($id)
+    {
+        $customer = Customer::find($id);
+        return response()->json([
+            'nama' => $customer->nama,
+            'email' => $customer->email
+        ]);
+    }
+
+    public function getEmployeeData($id)
+    {
+        $employee = Employee::find($id);
+        return response()->json([
+            'nama' => $employee->nama,
+            'email' => $employee->email
+        ]);
+    }
+
 }

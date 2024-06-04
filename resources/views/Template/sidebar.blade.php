@@ -73,9 +73,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ asset('status') }}" class="nav-link">
+                            <a href="{{ asset('spareparts') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Status</p>
+                                <p>Sparepart</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -85,9 +85,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ asset('spareparts') }}" class="nav-link">
+                            <a href="{{ asset('status') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Sparepart</p>
+                                <p>Status</p>
                             </a>
                         </li>
 

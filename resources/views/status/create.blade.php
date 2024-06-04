@@ -78,13 +78,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="kode_service">Kode Service</label>
-                                <input type="text" id="kode_service" name="kode_service" min="1970-01-01"
-                                    class="form-control" />
-                                <!-- Display warning message below notelp input -->
-                                @if ($errors->has('kode_service'))
-                                    <span class="text-danger">{{ $errors->first('kode_service') }}</span>
-                                @endif
+                                <label for="kode_service">Pilih Kode Service</label>
+                                <select id="kode_service" name="kode_service" class="form-control">
+                                    <option value="" selected disabled>Pilih Kode Service</option>
+                                    @foreach ($services as $service)
+                                        <option value="{{ $service->kode_service }}">{{ $service->kode_service }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">Simpan</button>
